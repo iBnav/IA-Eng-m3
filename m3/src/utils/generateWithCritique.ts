@@ -1,10 +1,10 @@
 import { openai } from "../clients/openai.ts"
-import { Conversation } from "../conversation.ts";
+import { ContextWindow } from "../contextWindow.ts";
 import { withRetry } from "./withRetry.ts"
 
 export async function generateWithCritique<T>(
     system: string,
-    conv: Conversation
+    contextWindow: ContextWindow
 ): Promise<string> {
     // step 1: generate initial response
     
@@ -13,7 +13,7 @@ export async function generateWithCritique<T>(
             model: "gpt-4.1-nano",
             messages: [
                 { role: "system", content: system },
-                ...conv.getMessages()
+                ...contextWindow.getMessages()
             ]
         });
         return response.choices[0].message.content ?? ""

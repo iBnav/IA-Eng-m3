@@ -1,6 +1,6 @@
 import { Message } from "./types.ts";
 
-export class Conversation {
+export class ContextWindow {
     private history: Message[] = [];
     
     addUserMessage(content: string) {

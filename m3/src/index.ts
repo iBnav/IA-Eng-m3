@@ -1,7 +1,7 @@
-import { Conversation } from "./conversation.ts";
+import { ContextWindow } from "./contextWindow.ts";
 import { generateWithCritique } from "./utils/generateWithCritique.ts";
 
-const conv = new Conversation();
+const contextWindow = new ContextWindow();
 
 const PERSONAS = {
     juridico: "Você é um especialista jurídico em direito tributário brasileiro.",
@@ -49,10 +49,10 @@ function contractAnalisysPrompt(
 
 async function chatWithPersona(persona: keyof typeof PERSONAS, msg: string) {
     const role = PERSONAS[persona]
-    conv.addUserMessage(msg)
+    contextWindow.addUserMessage(msg)
 
-    const llmAnswer = await generateWithCritique(role, conv)
-    conv.addAssistantMessage(llmAnswer)
+    const llmAnswer = await generateWithCritique(role, contextWindow)
+    contextWindow.addAssistantMessage(llmAnswer)
     
     console.log(llmAnswer)
 }
