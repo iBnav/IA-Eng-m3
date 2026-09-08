@@ -1,0 +1,24 @@
+{
+  "name": "m3d1",
+  "version": "1.0.0",
+  "scripts": {
+    "env:setup": "cp .env.example .env.local"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iBnav/ia-eng.git"
+  },
+  "author": "ibnav",
+  "bugs": {
+    "url": "https://github.com/iBnav/ia-eng/issues"
+  },
+  "homepage": "https://github.com/iBnav/ia-eng#readme",
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^26.2.0",
+    "tsx": "^4.23.12"
+  },
+  "dependencies": {
+    "openai": "^7.4.0"
+  }
+}
