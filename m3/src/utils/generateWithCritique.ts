@@ -13,7 +13,7 @@ export async function generateWithCritique<T>(
             model: "gpt-4.1-nano",
             messages: [
                 { role: "system", content: system },
-                ...contextWindow.getMessages()
+                ...contextWindow.getMessages() 
             ]
         });
         return response.choices[0].message.content ?? ""
@@ -33,7 +33,7 @@ export async function generateWithCritique<T>(
     });
 
     console.log(`step2: \n resposta da critica: ${critiqueAnswer}`)
-    
+ 
     if (critiqueAnswer.includes("approved")) {
         return draft
     } else {
