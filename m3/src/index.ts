@@ -1,7 +1,8 @@
 import { ContextWindow } from "./contextWindow.ts";
 import { generateWithCritique } from "./utils/generateWithCritique.ts";
+import { summarizeHistory } from "./utils/summarizeHistory.ts";
 
-const contextWindow = new ContextWindow();
+const contextWindow = new ContextWindow(2);
 
 const PERSONAS = {
     juridico: "Você é um especialista jurídico em direito tributário brasileiro.",
@@ -63,4 +64,16 @@ await chatWithPersona("juridico", contractAnalisysPrompt({
     levelOfDetail: "low"
 }))
 
+await chatWithPersona("juridico", "Quais são os riscos do contrato?")
+await chatWithPersona("juridico", "quantas clausulas existem no contrato?")
+await chatWithPersona("juridico", "Quais são as clausulas mais importantes do contrato?")
+
+await chatWithPersona("juridico", "qual foi minha primeira pergunta?")
+
+
+await summarizeHistory(contextWindow).then(summary => {
+    console.log("--------------------------------")
+    console.log("Resumo da conversa:")
+    console.log(summary)
+});
 
